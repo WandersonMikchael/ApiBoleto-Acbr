@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{764160F9-D877-40B6-B345-862C78DF6E8C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="HorseBoletoAPI.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DUnitHorseBoletoAPI.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="HorseBoletoAPI">
+        <MSBuild Projects="HorseBoletoAPI.dproj"/>
+    </Target>
+    <Target Name="HorseBoletoAPI:Clean">
+        <MSBuild Projects="HorseBoletoAPI.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HorseBoletoAPI:Make">
+        <MSBuild Projects="HorseBoletoAPI.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DUnitHorseBoletoAPI">
+        <MSBuild Projects="DUnitHorseBoletoAPI.dproj"/>
+    </Target>
+    <Target Name="DUnitHorseBoletoAPI:Clean">
+        <MSBuild Projects="DUnitHorseBoletoAPI.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DUnitHorseBoletoAPI:Make">
+        <MSBuild Projects="DUnitHorseBoletoAPI.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="HorseBoletoAPI;DUnitHorseBoletoAPI"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="HorseBoletoAPI:Clean;DUnitHorseBoletoAPI:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="HorseBoletoAPI:Make;DUnitHorseBoletoAPI:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
